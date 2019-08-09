@@ -6,14 +6,14 @@ import com.digits.mybeerservice.web.model.BeerDto;
 
 public interface BeerService {
 
-	BeerDto getBeerById(UUID beerId);
-	
-	BeerDto getBeerByUpc(Long upc);
+    BeerDto getBeerById(UUID beerId);
 
-	BeerDto saveNewBeer(BeerDto beerDto);
-	
-	BeerDto updateBeer(UUID beerId, BeerDto beerDto);
+    BeerDto getBeerByUpc(Long upc);
 
-	void deleteBeerById(UUID beerId);
+    BeerDto saveNewBeer(BeerDto beerDto);
+
+    BeerDto updateBeer(UUID beerId, BeerDto beerDto);
+
+    void deleteBeerById(UUID beerId);
 
 }

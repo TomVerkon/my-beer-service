@@ -14,9 +14,9 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CustomerDto {
 
-	private UUID id;
-	private String customerName;
-	private Integer version;
-	private OffsetDateTime createdDate;
-	private OffsetDateTime lastModifiedDate;
+    private UUID id;
+    private String customerName;
+    private Integer version;
+    private OffsetDateTime createdDate;
+    private OffsetDateTime lastModifiedDate;
 }

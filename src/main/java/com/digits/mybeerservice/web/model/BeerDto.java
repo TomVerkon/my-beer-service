@@ -15,14 +15,14 @@ import lombok.NoArgsConstructor;
 @Builder
 public class BeerDto {
 
-	private UUID id;
-	private String beerName;
-	private BeerStyleEnum beerStyle;
-	private Long upc;
-	private Integer quantityOnHand;
-	private BigDecimal price;
-	private Integer version;
-	private OffsetDateTime createdDate;
-	private OffsetDateTime lastModifiedDate;
+    private UUID id;
+    private String beerName;
+    private BeerStyleEnum beerStyle;
+    private Long upc;
+    private Integer quantityOnHand;
+    private BigDecimal price;
+    private Integer version;
+    private OffsetDateTime createdDate;
+    private OffsetDateTime lastModifiedDate;
 
 }

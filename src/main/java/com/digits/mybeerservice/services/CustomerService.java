@@ -6,11 +6,11 @@ import com.digits.mybeerservice.web.model.CustomerDto;
 
 public interface CustomerService {
 
-	CustomerDto getCustomerById(UUID customerId);
+    CustomerDto getCustomerById(UUID customerId);
 
-	CustomerDto saveCustomer(CustomerDto customerDto);
+    CustomerDto saveCustomer(CustomerDto customerDto);
 
-	void updateCustomer(UUID customerId, CustomerDto customerDto);
+    void updateCustomer(UUID customerId, CustomerDto customerDto);
 
-	void deleteCustomer(UUID customerId);
+    void deleteCustomer(UUID customerId);
 }
