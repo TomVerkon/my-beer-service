@@ -14,7 +14,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.digits.mybeerservice.services.BeerService;
 import com.digits.mybeerservice.services.CustomerService;
 import com.digits.mybeerservice.web.model.CustomerDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
