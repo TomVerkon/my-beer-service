@@ -10,14 +10,20 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.digits.mybeerservice.services.BeerService;
+import com.digits.mybeerservice.services.CustomerService;
 import com.digits.mybeerservice.web.model.CustomerDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebMvcTest(CustomerController.class)
 class CustomerControllerTest {
+
+	@MockBean
+	CustomerService customerService;
 
 	@Autowired
 	MockMvc mockMvc;
@@ -32,7 +38,7 @@ class CustomerControllerTest {
 	@Test
 	void testGetCustomerById() throws Exception {
 		mockMvc.perform(get("/api/v1/customer/" + UUID.randomUUID().toString()).accept(MediaType.APPLICATION_JSON))
-		.andExpect(status().isOk());
+				.andExpect(status().isOk());
 	}
 
 	@Test

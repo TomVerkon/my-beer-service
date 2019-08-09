@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class BeerDto {
-	
+
 	private UUID id;
 	private String beerName;
 	private BeerStyleEnum beerStyle;
@@ -24,4 +24,5 @@ public class BeerDto {
 	private Integer version;
 	private OffsetDateTime createdDate;
 	private OffsetDateTime lastModifiedDate;
+
 }
