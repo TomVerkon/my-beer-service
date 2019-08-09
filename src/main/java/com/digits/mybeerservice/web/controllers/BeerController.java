@@ -42,12 +42,12 @@ public class BeerController {
 	}
 	
 	@PostMapping
-	public ResponseEntity saveNewBeer(@RequestBody BeerDto beerDto) {
+	public ResponseEntity<?> saveNewBeer(@RequestBody BeerDto beerDto) {
 		// todo implement
 		BeerDto savedBeer = beerService.saveNewBeer(beerDto);
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("location", "/api/v1/beer/" + savedBeer.getId().toString());
-		return new ResponseEntity<HttpHeaders>(headers, HttpStatus.CREATED);
+		headers.add("Location", "/api/v1/beer/" + savedBeer.getId().toString());
+		return new ResponseEntity<Object>(headers, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{beerId}")
