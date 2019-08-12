@@ -53,7 +53,10 @@ class BeerControllerTest {
 	@Test
 	void testSaveNewBeer() throws Exception {
         //given
-        BeerDto beerDto = BeerDto.builder().beerName("Trash").beerStyle(BeerStyleEnum.PALE_ALE).upc(Long.MAX_VALUE).build();
+        BeerDto beerDto = BeerDto.builder()
+//        	.beerName("Trash")
+//        	.beerStyle(BeerStyleEnum.PALE_ALE)
+        	.upc(Long.MAX_VALUE).build();
         BeerDto savedDto = BeerDto.builder().beerName("Trash").beerStyle(BeerStyleEnum.PALE_ALE).upc(Long.MAX_VALUE).id(UUID.randomUUID()).build();
         String beerDtoJson = objectMapper.writeValueAsString(beerDto);
 

@@ -2,6 +2,8 @@ package com.digits.mybeerservice.web.controllers;
 
 import java.util.UUID;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,7 +43,7 @@ public class BeerController {
     }
 
     @PostMapping
-    public ResponseEntity<?> saveNewBeer(@RequestBody BeerDto beerDto) {
+    public ResponseEntity<?> saveNewBeer(@Valid @RequestBody BeerDto beerDto) {
 	// todo implement
 	BeerDto savedBeer = beerService.saveNewBeer(beerDto);
 	HttpHeaders headers = new HttpHeaders();
@@ -50,7 +52,7 @@ public class BeerController {
     }
 
     @PutMapping("/{beerId}")
-    public ResponseEntity<?> updateBeerById(@PathVariable("beerId") UUID beerId, @RequestBody BeerDto beerDto) {
+    public ResponseEntity<?> updateBeerById(@Valid @PathVariable("beerId") UUID beerId, @RequestBody BeerDto beerDto) {
 	beerService.updateBeer(beerId, beerDto);
 	return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
     }
@@ -60,4 +62,5 @@ public class BeerController {
     public void deleteBeer(@PathVariable("beerId") UUID beerId) {
 	beerService.deleteBeerById(beerId);
     }
+
 }

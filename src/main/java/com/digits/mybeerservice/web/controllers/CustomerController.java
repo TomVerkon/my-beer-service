@@ -2,6 +2,8 @@ package com.digits.mybeerservice.web.controllers;
 
 import java.util.UUID;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +36,7 @@ public class CustomerController {
     }
 
     @PostMapping
-    public ResponseEntity<?> registerNewCustomer(@RequestBody CustomerDto customerDto) {
+    public ResponseEntity<?> registerNewCustomer(@Valid @RequestBody CustomerDto customerDto) {
 	// todo implement
 //		BeerDto savedBeer = beerService.saveNewBeer(beerDto);
 //		HttpHeaders headers = new HttpHeaders();
@@ -49,7 +51,7 @@ public class CustomerController {
 
     @PutMapping("/{customerId}")
     public ResponseEntity<Object> updateCustomer(@PathVariable("customerId") UUID customerId,
-	    @RequestBody CustomerDto customerDto) {
+	    @Valid @RequestBody CustomerDto customerDto) {
 	customerService.updateCustomer(customerId, customerDto);
 	return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
     }
@@ -59,5 +61,5 @@ public class CustomerController {
 	customerService.deleteCustomer(customerId);
 	return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
     }
-
+    
 }
