@@ -25,7 +25,12 @@ public class CustomerDto {
     @Size(min = 3, max = 100)
     private String customerName;
     
+    @Null(message = "version must be null")
     private Integer version;
+
+    @Null(message = "createDate must be null")
     private OffsetDateTime createdDate;
+
+    @Null(message = "lastModifiedDate must be null")
     private OffsetDateTime lastModifiedDate;
 }

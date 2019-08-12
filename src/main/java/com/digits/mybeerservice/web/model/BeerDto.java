@@ -23,7 +23,7 @@ public class BeerDto {
     @Null(message = "id must be null")
     private UUID id;
     
-    @NotBlank(message = "The beerName can not be blanl")
+    @NotBlank(message = "The beerName can not be blank")
     private String beerName;
     
     @NotNull(message = "You must assign a beer style")
