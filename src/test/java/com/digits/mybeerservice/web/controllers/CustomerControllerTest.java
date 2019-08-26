@@ -21,32 +21,32 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @WebMvcTest(CustomerController.class)
 class CustomerControllerTest {
 
-	@MockBean
-	CustomerService customerService;
+    @MockBean
+    CustomerService customerService;
 
-	@Autowired
-	MockMvc mockMvc;
+    @Autowired
+    MockMvc mockMvc;
 
-	@Autowired
-	ObjectMapper objectMapper;
+    @Autowired
+    ObjectMapper objectMapper;
 
-	@BeforeEach
-	void setUp() throws Exception {
-	}
+    @BeforeEach
+    void setUp() throws Exception {
+    }
 
-	@Test
-	void testGetCustomerById() throws Exception {
-		mockMvc.perform(get("/api/v1/customer/" + UUID.randomUUID().toString()).accept(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk());
-	}
+    @Test
+    void testGetCustomerById() throws Exception {
+	mockMvc.perform(get("/api/v1/customer/" + UUID.randomUUID().toString()).accept(MediaType.APPLICATION_JSON))
+		.andExpect(status().isOk());
+    }
 
-	@Test
-	void testRegisterNewCustomr() throws Exception {
-		CustomerDto customrDto = CustomerDto.builder().build();
-		String customerDtoJson = objectMapper.writeValueAsString(customrDto);
+    @Test
+    void testRegisterNewCustomr() throws Exception {
+	CustomerDto customrDto = CustomerDto.builder().build();
+	String customerDtoJson = objectMapper.writeValueAsString(customrDto);
 
-		mockMvc.perform(post("/api/v1/customer/").contentType(MediaType.APPLICATION_JSON).content(customerDtoJson))
-				.andExpect(status().isCreated());
-	}
+	mockMvc.perform(post("/api/v1/customer/").contentType(MediaType.APPLICATION_JSON).content(customerDtoJson))
+		.andExpect(status().isCreated());
+    }
 
 }

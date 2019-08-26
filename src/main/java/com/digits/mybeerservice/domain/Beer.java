@@ -33,23 +33,23 @@ public class Beer {
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(length = 36, columnDefinition = "varchar", updatable = false, nullable = false)
     private UUID id;
-    
+
     private String beerName;
     private BeerStyleEnum beerStyle;
-    
+
     @Column(unique = true)
     private Long upc;
-    
+
     private Integer quantityOnHand;
     private BigDecimal price;
-    
+
     @Version
     private Integer version;
-    
+
     @CreationTimestamp
     @Column(updatable = false)
     private Timestamp createdDate;
-    
+
     @UpdateTimestamp
     private Timestamp lastModifiedDate;
 }

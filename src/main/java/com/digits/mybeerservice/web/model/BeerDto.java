@@ -22,17 +22,17 @@ public class BeerDto {
 
     @Null(message = "id must be null")
     private UUID id;
-    
+
     @NotBlank(message = "The beerName can not be blank")
     private String beerName;
-    
+
     @NotNull(message = "You must assign a beer style")
     private BeerStyleEnum beerStyle;
-    
+
     @NotNull
     @Positive(message = "upc must be greater than 0")
     private Long upc;
-    
+
     private Integer quantityOnHand;
 
     @NotNull

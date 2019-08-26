@@ -20,11 +20,11 @@ public class CustomerDto {
 
     @Null
     private UUID id;
-    
+
     @NotBlank
     @Size(min = 3, max = 100)
     private String customerName;
-    
+
     @Null(message = "version must be null")
     private Integer version;
 
