@@ -16,12 +16,14 @@
 	<description>Beer Microservice</description>
 
 	<properties>
+		<m2e.apt.activation>jdt_apt</m2e.apt.activation>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>12</java.version>
+		<java.version>11</java.version>
 		<jaxb.version>2.3.0</jaxb.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<mapstruct.version>1.3.0.Final</mapstruct.version>
 	</properties>
 
 	<dependencies>
@@ -69,6 +71,11 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${mapstruct.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -104,6 +111,11 @@
 			<artifactId>mockito-core</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -111,6 +123,29 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<annotationProcessorPaths>
+						<annotationProcessorPath>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>${mapstruct.version}</version>
+						</annotationProcessorPath>
+						<annotationProcessorPath>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>${lombok.version}</version>
+						</annotationProcessorPath>
+					</annotationProcessorPaths>
+					<generatedSourcesDirectory>${project.build.directory}/generated-sources</generatedSourcesDirectory>
+					<compilerArgs>
+						<compilerArg>-Amapstruct.defaultComponentModel=spring</compilerArg>
+					</compilerArgs>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

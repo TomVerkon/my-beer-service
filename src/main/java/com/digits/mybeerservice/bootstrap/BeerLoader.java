@@ -6,17 +6,21 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.digits.mybeerservice.domain.Beer;
+import com.digits.mybeerservice.domain.Customer;
 import com.digits.mybeerservice.repositories.BeerRepository;
+import com.digits.mybeerservice.repositories.CustomerRepository;
 import com.digits.mybeerservice.web.model.BeerStyleEnum;
 
 @Component
 public class BeerLoader implements CommandLineRunner {
 
     private final BeerRepository beerRepository;
+    private final CustomerRepository customerRepository;
 
-    public BeerLoader(BeerRepository beerRepository) {
+    public BeerLoader(BeerRepository beerRepository, CustomerRepository customerRepository) {
 	super();
 	this.beerRepository = beerRepository;
+	this.customerRepository = customerRepository;
     }
 
     @Override
@@ -31,6 +35,10 @@ public class BeerLoader implements CommandLineRunner {
 	    beerRepository.save(Beer.builder().beerName("Yeungling").beerStyle(BeerStyleEnum.LAGER)
 		    .price(new BigDecimal("10.99")).quantityOnHand(500).upc(Long.MAX_VALUE - 2).build());
 	    // System.out.println("Loaded " + beerRepository.count() + " beers");
+	}
+	if (customerRepository.count() == 0) {
+	    customerRepository.save(Customer.builder().customerName("Tom Verkon").build());
+	    customerRepository.save(Customer.builder().customerName("PaulS Verkon").build());
 	}
     }
 
