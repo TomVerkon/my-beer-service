@@ -19,7 +19,7 @@
 		<m2e.apt.activation>jdt_apt</m2e.apt.activation>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>11</java.version>
+		<java.version>12</java.version>
 		<jaxb.version>2.3.0</jaxb.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
@@ -131,14 +131,14 @@
 				<configuration>
 					<annotationProcessorPaths>
 						<annotationProcessorPath>
-							<groupId>org.mapstruct</groupId>
-							<artifactId>mapstruct-processor</artifactId>
-							<version>${mapstruct.version}</version>
-						</annotationProcessorPath>
-						<annotationProcessorPath>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
 							<version>${lombok.version}</version>
+						</annotationProcessorPath>
+						<annotationProcessorPath>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>${mapstruct.version}</version>
 						</annotationProcessorPath>
 					</annotationProcessorPaths>
 					<generatedSourcesDirectory>${project.build.directory}/generated-sources</generatedSourcesDirectory>
