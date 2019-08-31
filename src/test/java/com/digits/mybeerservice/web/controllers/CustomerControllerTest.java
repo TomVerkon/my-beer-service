@@ -1,5 +1,7 @@
 package com.digits.mybeerservice.web.controllers;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -42,8 +44,11 @@ class CustomerControllerTest {
 
     @Test
     void testRegisterNewCustomr() throws Exception {
-	CustomerDto customrDto = CustomerDto.builder().build();
-	String customerDtoJson = objectMapper.writeValueAsString(customrDto);
+	CustomerDto customerDto = CustomerDto.builder().customerName("Joe BagOfDonuts").build();
+	CustomerDto savedCustomerDto = CustomerDto.builder().id(UUID.randomUUID()).customerName("Joe BagOfDonuts").build();
+	String customerDtoJson = objectMapper.writeValueAsString(customerDto);
+
+	given(customerService.saveCustomer(any())).willReturn(savedCustomerDto);
 
 	mockMvc.perform(post("/api/v1/customer/").contentType(MediaType.APPLICATION_JSON).content(customerDtoJson))
 		.andExpect(status().isCreated());
