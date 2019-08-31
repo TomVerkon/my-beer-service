@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.digits.mybeerservice.domain.Customer;
 
 @Repository
-public interface CustomerRepository extends PagingAndSortingRepository<Customer, UUID>{
+public interface CustomerRepository extends PagingAndSortingRepository<Customer, UUID> {
 
 }

@@ -8,11 +8,11 @@ import com.digits.mybeerservice.web.model.CustomerDto;
 
 @Mapper(componentModel = "spring", uses = DateTimeMapper.class)
 public interface CustomerMapper {
-    
+
     CustomerMapper INSTANCE = Mappers.getMapper(CustomerMapper.class);
-    
+
     public CustomerDto customerToCustomerDto(Customer customer);
-    
+
     public Customer customerDtoToCustomer(CustomerDto customerDto);
 
 }

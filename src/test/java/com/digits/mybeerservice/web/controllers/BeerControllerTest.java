@@ -7,6 +7,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -53,17 +54,15 @@ class BeerControllerTest {
     @Test
     void testSaveNewBeer() throws Exception {
 	// given
-	BeerDto beerDto = BeerDto.builder()
-//        	.beerName("Trash")
-//        	.beerStyle(BeerStyleEnum.PALE_ALE)
-		.upc(Long.MAX_VALUE).build();
+	BeerDto beerDto = BeerDto.builder().beerName("Trash").beerStyle(BeerStyleEnum.PALE_ALE).upc(Long.MAX_VALUE)
+		.price(new BigDecimal("3.99")).build();
 	BeerDto savedDto = BeerDto.builder().beerName("Trash").beerStyle(BeerStyleEnum.PALE_ALE).upc(Long.MAX_VALUE)
 		.id(UUID.randomUUID()).build();
 	String beerDtoJson = objectMapper.writeValueAsString(beerDto);
 
 	given(beerService.saveNewBeer(any())).willReturn(savedDto);
 
-	mockMvc.perform(post("/api/v1/beer/").contentType(MediaType.APPLICATION_JSON).content(beerDtoJson))
+	mockMvc.perform(post("/api/v1/beer").contentType(MediaType.APPLICATION_JSON).content(beerDtoJson))
 		.andExpect(status().isCreated());
 
     }

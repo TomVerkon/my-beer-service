@@ -15,7 +15,7 @@ class DateTimeMapperTest {
     @BeforeEach
     void setUp() throws Exception {
     }
-    
+
     @Test
     void testDateTimeMapper() {
 	Timestamp tsIn = Timestamp.from(Instant.now());
