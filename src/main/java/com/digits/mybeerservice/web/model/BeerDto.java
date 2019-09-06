@@ -9,6 +9,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Positive;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,32 +24,37 @@ import lombok.NoArgsConstructor;
 @Builder
 public class BeerDto {
 
-    @Null(message = "id must be null")
+    @Null
     private UUID id;
 
-    @NotBlank(message = "The beerName can not be blank")
+    @NotBlank
     private String beerName;
 
-    @NotNull(message = "You must assign a beer style")
+    @NotNull
     private BeerStyleEnum beerStyle;
 
     @NotNull
-    @Positive(message = "upc must be greater than 0")
+    @Positive
     private Long upc;
 
     private Integer quantityOnHand;
 
     @NotNull
-    @Positive(message = "price must be greater than 0")
+    @Positive
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     private BigDecimal price;
 
-    @Null(message = "version must be null")
+    @Null
     private Integer version;
 
-    @Null(message = "createDate must be null")
+    @Null
+    @JsonSerialize(using = OffsetDateTimeSerializer.class)
+    @JsonDeserialize(using = OffsetDateTimeDeserializer.class)
     private OffsetDateTime createdDate;
 
-    @Null(message = "lastModifiedDate must be null")
+    @Null
+    @JsonSerialize(using = OffsetDateTimeSerializer.class)
+    @JsonDeserialize(using = OffsetDateTimeDeserializer.class)
     private OffsetDateTime lastModifiedDate;
 
 }
