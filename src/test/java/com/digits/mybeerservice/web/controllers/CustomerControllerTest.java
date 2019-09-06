@@ -45,7 +45,8 @@ class CustomerControllerTest {
     @Test
     void testRegisterNewCustomr() throws Exception {
 	CustomerDto customerDto = CustomerDto.builder().customerName("Joe BagOfDonuts").build();
-	CustomerDto savedCustomerDto = CustomerDto.builder().id(UUID.randomUUID()).customerName("Joe BagOfDonuts").build();
+	CustomerDto savedCustomerDto = CustomerDto.builder().id(UUID.randomUUID()).customerName("Joe BagOfDonuts")
+		.build();
 	String customerDtoJson = objectMapper.writeValueAsString(customerDto);
 
 	given(customerService.saveCustomer(any())).willReturn(savedCustomerDto);

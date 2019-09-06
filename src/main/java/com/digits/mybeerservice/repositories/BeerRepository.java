@@ -1,5 +1,6 @@
 package com.digits.mybeerservice.repositories;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -9,5 +10,7 @@ import com.digits.mybeerservice.domain.Beer;
 
 @Repository
 public interface BeerRepository extends PagingAndSortingRepository<Beer, UUID> {
+
+    Optional<Beer> findByUpc(Long upc);
 
 }

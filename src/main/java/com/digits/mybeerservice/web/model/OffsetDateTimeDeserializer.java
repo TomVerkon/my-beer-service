@@ -9,11 +9,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
-public class OffsetDateTimeDeserializer extends StdDeserializer<OffsetDateTime>{
+public class OffsetDateTimeDeserializer extends StdDeserializer<OffsetDateTime> {
 
     protected OffsetDateTimeDeserializer() {
 	super(OffsetDateTime.class);
-   }
+    }
 
     @Override
     public OffsetDateTime deserialize(JsonParser parser, DeserializationContext ctxt)

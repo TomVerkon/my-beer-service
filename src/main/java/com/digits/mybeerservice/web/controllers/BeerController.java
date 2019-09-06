@@ -20,31 +20,28 @@ import org.springframework.web.bind.annotation.RestController;
 import com.digits.mybeerservice.services.BeerService;
 import com.digits.mybeerservice.web.model.BeerDto;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @RequestMapping("/api/v1/beer")
 @RestController
 public class BeerController {
 
     private BeerService beerService;
 
-    public BeerController(BeerService beerService) {
-	this.beerService = beerService;
-    }
-
     @GetMapping("/{beerId}")
     public ResponseEntity<BeerDto> getBeerById(@PathVariable("beerId") UUID beerId) {
-	// todo implement
 	return new ResponseEntity<BeerDto>(beerService.getBeerById(beerId), HttpStatus.OK);
     }
 
     @GetMapping("/upc/{upc}")
     public ResponseEntity<BeerDto> getBeerByUpc(@PathVariable("upc") Long upc) {
 	// todo implement
-	return new ResponseEntity<BeerDto>(BeerDto.builder().upc(upc).build(), HttpStatus.OK);
+	return new ResponseEntity<BeerDto>(beerService.getBeerByUpc(upc), HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity<?> saveNewBeer(@Valid @RequestBody BeerDto beerDto) {
-	// todo implement
 	BeerDto savedBeer = beerService.saveNewBeer(beerDto);
 	HttpHeaders headers = new HttpHeaders();
 	headers.add("Location", "/api/v1/beer/" + savedBeer.getId().toString());
