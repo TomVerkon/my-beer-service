@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.digits.mybeerservice.services.BeerService;
 import com.digits.mybeerservice.web.model.BeerDto;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
-@RequiredArgsConstructor
+@AllArgsConstructor
 @RequestMapping("/api/v1/beer")
 @RestController
 public class BeerController {
@@ -35,7 +35,7 @@ public class BeerController {
     }
 
     @GetMapping("/upc/{upc}")
-    public ResponseEntity<BeerDto> getBeerByUpc(@PathVariable("upc") Long upc) {
+    public ResponseEntity<BeerDto> getBeerByUpc(@PathVariable("upc") String upc) {
 	// todo implement
 	return new ResponseEntity<BeerDto>(beerService.getBeerByUpc(upc), HttpStatus.OK);
     }

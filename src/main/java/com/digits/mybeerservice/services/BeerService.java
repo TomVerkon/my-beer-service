@@ -8,7 +8,7 @@ public interface BeerService {
 
     BeerDto getBeerById(UUID beerId);
 
-    BeerDto getBeerByUpc(Long upc);
+    BeerDto getBeerByUpc(String upc);
 
     BeerDto saveNewBeer(BeerDto beerDto);
 

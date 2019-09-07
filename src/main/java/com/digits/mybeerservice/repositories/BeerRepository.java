@@ -11,6 +11,6 @@ import com.digits.mybeerservice.domain.Beer;
 @Repository
 public interface BeerRepository extends PagingAndSortingRepository<Beer, UUID> {
 
-    Optional<Beer> findByUpc(Long upc);
+    Optional<Beer> findByUpc(String upc);
 
 }

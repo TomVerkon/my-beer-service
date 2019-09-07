@@ -18,6 +18,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.digits.mybeerservice.bootstrap.BeerLoader;
 import com.digits.mybeerservice.services.BeerService;
 import com.digits.mybeerservice.web.model.BeerDto;
 import com.digits.mybeerservice.web.model.BeerStyleEnum;
@@ -47,16 +48,16 @@ class BeerControllerTest {
 
     @Test
     void testGetBeerByUpc() throws Exception {
-	mockMvc.perform(get("/api/v1/beer/upc/" + String.valueOf(Long.MAX_VALUE)).accept(MediaType.APPLICATION_JSON))
+	mockMvc.perform(get("/api/v1/beer/upc/" + BeerLoader.BEER_1_UPC).accept(MediaType.APPLICATION_JSON))
 		.andExpect(status().isOk());
     }
 
     @Test
     void testSaveNewBeer() throws Exception {
 	// given
-	BeerDto beerDto = BeerDto.builder().beerName("Trash").beerStyle(BeerStyleEnum.PALE_ALE).upc(Long.MAX_VALUE)
+	BeerDto beerDto = BeerDto.builder().beerName("Trash").beerStyle(BeerStyleEnum.PALE_ALE).upc("1234567890")
 		.price(new BigDecimal("3.99")).build();
-	BeerDto savedDto = BeerDto.builder().beerName("Trash").beerStyle(BeerStyleEnum.PALE_ALE).upc(Long.MAX_VALUE)
+	BeerDto savedDto = BeerDto.builder().beerName("Trash").beerStyle(BeerStyleEnum.PALE_ALE).upc("2345678901")
 		.id(UUID.randomUUID()).build();
 	String beerDtoJson = objectMapper.writeValueAsString(beerDto);
 
