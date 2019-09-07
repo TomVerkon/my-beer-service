@@ -11,6 +11,11 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
 public class OffsetDateTimeDeserializer extends StdDeserializer<OffsetDateTime> {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -4773222582358237639L;
+
     protected OffsetDateTimeDeserializer() {
 	super(OffsetDateTime.class);
     }
