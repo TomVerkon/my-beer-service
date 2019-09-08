@@ -11,7 +11,7 @@ import com.digits.mybeerservice.repositories.BeerRepository;
 import com.digits.mybeerservice.repositories.CustomerRepository;
 import com.digits.mybeerservice.web.model.BeerStyleEnum;
 
-@Component
+//@Component
 public class BeerLoader implements CommandLineRunner {
 
     public static final String BEER_1_UPC = "0631234200036";
